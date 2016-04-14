@@ -602,7 +602,7 @@ A [material design implementation of a data table](https://www.google.com/design
 								if(isEmpty || isWrongRow || isWrongColumn){
 									cell.removeAttribute('data-empty');
 									var prop = cell.dataColumn.property;
-									var data = rowData[prop];
+									var data = prop ? rowData[prop] : rowData;
 
 									cell.setAttribute('data-row-key', row.dataset.key);
 									cell.dataBoundColumn = cell.dataColumn;
