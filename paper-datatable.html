@@ -249,7 +249,7 @@
 							</th>
 						</template>
 						<template id="columnRepeat" is="dom-repeat" items="{{_columns}}" as="column" on-dom-change="_columnsRendered">
-							<th class="column" data-sortable$="[[column.sortable]]" data-column="[[column]]" on-tap="_handleSort" style$="{{column._styleString}}">
+							<th class="column" data-sortable$="[[_isSortable(column.property,column.sortable)]]" data-column="[[column]]" on-tap="_handleSort" style$="{{column._styleString}}">
 								<iron-icon icon="datatable:sort-desc-md" class="sort"></iron-icon>
 								<span id="title">{{column.header}}</span>
 								<template is="dom-if" if="[[column.tooltip]]">
@@ -1104,8 +1104,10 @@ A [material design implementation of a data table](https://www.google.com/design
 				_updateHeaderColumn: function(event) {
 					var column = Polymer.dom(event).localTarget;
 					this.notifyPath(`_columns.${column.index}.header`, this._columns[column.index].header);
+				},
+				_isSortable: function(property,sortable) {
+					return property && sortable;
 				}
-
 			});
 		})();
 	</script>
