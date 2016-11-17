@@ -33,6 +33,14 @@
 			:host([resize-behavior='fixed']) td{
 				overflow: hidden;
 			}
+			:host([resize-behavior='none']) th{
+				overflow: hidden;
+				text-overflow: ellipsis;
+			}
+			:host([resize-behavior='none']) td{
+				overflow: hidden;
+				text-overflow: ellipsis;
+			}
 			table{
 				border-spacing: 0px;
 				width:100%;
