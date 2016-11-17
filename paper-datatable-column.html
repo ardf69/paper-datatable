@@ -164,6 +164,7 @@ This element is used inside of `<paper-datatable>` to declare the columns to be 
 					_styleString: {
 						type: String,
 						value: function(){
+							console.log(this.getAttribute('style'));
 							if (this.style.length > 0) {
 								return this.style.cssText;
 							} else {
