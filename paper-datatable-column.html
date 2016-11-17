@@ -164,6 +164,7 @@ This element is used inside of `<paper-datatable>` to declare the columns to be 
 					_styleString: {
 						type: String,
 						value: function(){
+							console.log(this.style);
 							var alignment = this.align || this.getAttribute('align') || 'left';
 							var minWidth = this.width || this.getAttribute('width') || 0;
 							minWidth += parseFloat(minWidth).toString() === minWidth ? 'px' : '';
