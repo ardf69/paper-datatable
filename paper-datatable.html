@@ -17,6 +17,21 @@
 				@apply(--paper-font-common-base);
 				position: relative;
 			}
+			:host([resize-behavior='none']) #container {
+				overflow: hidden;
+			}
+			:host([resize-behavior='none']) table {
+				table-layout: auto;
+			}
+			:host([resize-behavior='none']) th {
+				overflow: hidden;
+				text-overflow: ellipsis;
+			}
+			:host([resize-behavior='none']) td {
+				overflow: hidden;
+				text-overflow: ellipsis;
+			}
+
 			:host([resize-behavior='overflow']) #container{
 				overflow: auto;
 			}
