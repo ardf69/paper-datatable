@@ -152,8 +152,13 @@ This element is used inside of `<paper-datatable>` to declare the columns to be 
 					 * @default 'left'
 					 */
 					align: {
+						observer: '_onCustomStyleChanged',
 						type: String,
 						value: 'left'
+					},
+					customStyle: {
+						observer: '_onCustomStyleChanged',
+						type: String,
 					},
 					/**
 					 * Style to be applied to the header.
@@ -163,13 +168,13 @@ This element is used inside of `<paper-datatable>` to declare the columns to be 
 					 */
 					_styleString: {
 						type: String,
-						value: function(){
-							var alignment = this.align || this.getAttribute('align') || 'left';
-							var minWidth = this.width || this.getAttribute('width') || 0;
-							minWidth += parseFloat(minWidth).toString() === minWidth ? 'px' : '';
-							var styleString = this.getAttribute('style') || '';
-							return 'text-align:'+alignment+';min-width:'+minWidth+';'+styleString;
-						}
+						// value: function(){
+						// 	var alignment = this.align || this.getAttribute('align') || 'left';
+						// 	var minWidth = this.width || this.getAttribute('width') || 0;
+						// 	minWidth += parseFloat(minWidth).toString() === minWidth ? 'px' : '';
+						// 	var styleString = this.getAttribute('style') || '';
+						// 	return 'text-align:'+alignment+';min-width:'+minWidth+';'+styleString;
+						// }
 					},
 					/**
 					 * If you have `undefined`'s in your `data` this method can be used to
@@ -252,7 +257,10 @@ This element is used inside of `<paper-datatable>` to declare the columns to be 
 					 *
 					 * @type Number in px or String
 					 */
-					width: Object
+					width: {
+						observer: '_onCustomStyleChanged',
+						type: Object
+					}
 				},
 				behaviors: [
 					Polymer.Templatizer
@@ -441,8 +449,20 @@ This element is used inside of `<paper-datatable>` to declare the columns to be 
 				},
 				_headerChanged: function(header) {
 					this.fire('header-changed');
-				}
+				},
 
+				_onCustomStyleChanged: function() {
+					if (this.customStyle) {
+						this._styleString = this.customStyle;
+					} else {
+						var alignment = this.align || this.getAttribute('align') || 'left';
+						var minWidth = this.width || this.getAttribute('width') || 0;
+						minWidth += parseFloat(minWidth).toString() === minWidth ? 'px' : '';
+						var styleString = this.getAttribute('style') || '';
+						this._styleString = 'text-align:'+alignment+';min-width:'+minWidth+';'+styleString;
+					}
+
+				}
 			});
 		})();
 	</script>
