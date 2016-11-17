@@ -155,6 +155,9 @@ This element is used inside of `<paper-datatable>` to declare the columns to be 
 						type: String,
 						value: 'left'
 					},
+					customStyle: {
+						type: String,
+					},
 					/**
 					 * Style to be applied to the header.
 					 *
@@ -164,9 +167,8 @@ This element is used inside of `<paper-datatable>` to declare the columns to be 
 					_styleString: {
 						type: String,
 						value: function(){
-							console.log(this.getAttribute('style'));
-							if (this.style.length > 0) {
-								return this.style.cssText;
+							if (this.customStyle) {
+								return this.customStyle;
 							} else {
 								var alignment = this.align || this.getAttribute('align') || 'left';
 								var minWidth = this.width || this.getAttribute('width') || 0;
