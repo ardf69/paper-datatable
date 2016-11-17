@@ -168,12 +168,14 @@ This element is used inside of `<paper-datatable>` to declare the columns to be 
 						type: String,
 						value: function(){
 							if (this.customStyle) {
+								console.log(this.customStyle);
 								return this.customStyle;
 							} else {
 								var alignment = this.align || this.getAttribute('align') || 'left';
 								var minWidth = this.width || this.getAttribute('width') || 0;
 								minWidth += parseFloat(minWidth).toString() === minWidth ? 'px' : '';
 								var styleString = this.getAttribute('style') || '';
+								console.log('text-align:'+alignment+';min-width:'+minWidth+';'+styleString);
 								return 'text-align:'+alignment+';min-width:'+minWidth+';'+styleString;
 							}
 						}
