@@ -288,7 +288,7 @@
 								<template id="cellRepeat" is="dom-repeat" items="{{_columns}}" as="column" on-dom-change="_restructureData">
 									<td data-empty class="bound-cell" data-column="{{column}}" data-editable$="{{column.editable}}" data-edit-icon$="{{column.editIcon}}" on-tap="_cellTapped">
 										<div>
-											<span></span>
+											<span style="max-width:100%"></span>
 											<iron-icon icon="datatable:editable" class="editable"></iron-icon>
 										</div>
 									</td>
@@ -305,7 +305,7 @@
 								<template id="cellRepeat" is="dom-repeat" items="{{_columns}}" as="column" on-dom-change="_restructureData">
 									<td data-empty class="bound-cell" data-column="{{column}}" data-editable$="{{column.editable}}" data-edit-icon$="{{column.editIcon}}" on-tap="_cellTapped">
 										<div>
-											<span></span>
+											<span style="max-width:100%"></span>
 											<iron-icon icon="datatable:editable" class="editable"></iron-icon>
 										</div>
 									</td>
