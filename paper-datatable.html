@@ -1104,7 +1104,7 @@ A [material design implementation of a data table](https://www.google.com/design
 				},
 				_updateHeaderColumn: function(event) {
 					var column = Polymer.dom(event).localTarget;
-					this.notifyPath(`_columns.${column.index}.header`, this._columns[column.index].header);
+					this.notifyPath('_columns.' + column.index + '.header', this._columns[column.index].header);
 				},
 				_isSortable: function(property,sortable) {
 					return property && sortable;
